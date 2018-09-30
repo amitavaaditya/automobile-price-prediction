@@ -20,8 +20,8 @@ def search_dataset():
     return datasets[0]
 
 
-def load_data(filename, na_values):
-    df = pd.read_csv(filename, na_values=na_values)
+def load_data(filename):
+    df = pd.read_csv(filename, na_values=['?'])
     return df
 
 
@@ -46,7 +46,7 @@ def preprocess(df):
     return features_df, target_ser
 
 
-def split(X, y, seed=42)
+def split(X, y, seed=42):
     return train_test_split(X, y, random_state=seed)
 
 
@@ -66,8 +66,8 @@ def train(model, X, y):
 
 
 def validate(model, X_train, y_train, X_test, y_test):
-    print('Training score: {}'.format(X_train, y_train))
-    print('Test score: {}'.format(X_test, y_test))
+    print('Training score: {}'.format(model.score(X_train, y_train)))
+    print('Test score: {}'.format(model.score(X_test, y_test)))
 
 
 if __name__ == '__main__':
